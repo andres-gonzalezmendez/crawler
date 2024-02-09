@@ -1,0 +1,47 @@
+Dado el fichero csv Majestic
+Se require un script python llamado crawler.py q reciba 4 parametros, 1 obligatorio, 2 opcionales y la ayuda, y se ejecute de la siguiente forma.
+
+python crawler.py 
+   -f <ruta_fichero> (obligatorio)
+   -c <num_webs> (opcional) 
+   -s <ranking_inicial> (opcional)
+   -h (Ayuda, muestra este mismo menu) (opcional)
+
+El script debera recorrer el fichero indicado en el parametro obligatorio <ruta_fichero> y realizar una peticion a las webs q contiene 
+usando el campo "Domain" como hostname de cada url. 
+De cada web obtendrá cuantas veces aparece la letra 'c' en su titulo(etiqueta title del html de la web) y lo mostrara por pantalla.
+
+Si se usa el parametro -c, solo se consultara el numero de webs que se indique (si no se indica, el script consultara todo hasta que termine)
+Si se usa el parametro -s, se empezará a consultar a partir de la web con el ranking indicado (en el fichero csv el campo 'GlobalRank')
+
+Ejemplo:
+
+mifichero.csv
+
+GlobalRank,TldRank,Domain,TLD,RefSubNets,RefIPs,IDN_Domain,IDN_TLD,PrevGlobalRank,PrevTldRank,PrevRefSubNets,PrevRefIPs
+1,1,google.com,com,425695,2676915,google.com,com,1,1,426266,2679151
+2,2,facebook.com,com,418141,2804844,facebook.com,com,2,2,418744,2806375
+3,3,youtube.com,com,380265,2244333,youtube.com,com,3,3,380836,2245752
+4,4,twitter.com,com,376529,2336928,twitter.com,com,4,4,377015,2338777
+5,5,microsoft.com,com,271316,896403,microsoft.com,com,5,5,271973,898634
+6,6,linkedin.com,com,263391,1181256,linkedin.com,com,6,6,263675,1181773
+7,1,wikipedia.org,org,261454,1128139,wikipedia.org,org,7,1,261607,1128504
+8,7,plus.google.com,com,259734,1328427,plus.google.com,com,8,7,260279,1329991
+
+
+
+python crawler.py /ruta/hacia_/miFichero.csv -c 4 -s 2
+
+recorrera estos registros
+
+2,2,facebook.com,com,418141,2804844,facebook.com,com,2,2,418744,2806375
+3,3,youtube.com,com,380265,2244333,youtube.com,com,3,3,380836,2245752
+4,4,twitter.com,com,376529,2336928,twitter.com,com,4,4,377015,2338777
+5,5,microsoft.com,com,271316,896403,microsoft.com,com,5,5,271973,898634
+
+
+y sacara una salida tal que así:
+
+facebook.com tiene <x> letras c en su titulo 
+youtube.com tiene <x> letras c en su titulo
+...
