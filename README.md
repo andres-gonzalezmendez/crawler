@@ -35,8 +35,8 @@ Fecha: 12/02/2024
   python crawler.py -f <ruta_fichero_csv> -s <s> -c <c>
   ```
   Donde:
-  + `s`: Número de ranking de la web a partir de la cual se inicia la consulta.
-  + `c`: Número de webs que se incluirán en la consulta.
+  + `s`: Número de ranking de la web a partir de la cual se inicia la consulta. Opcional.
+  + `c`: Número de webs que se incluirán en la consulta. Opcional.
  
 ## Obtener ayuda
 
