@@ -14,9 +14,9 @@ def main():
     # Obtener valores de los parámetros
     parameters = get_parameters()
 
-    file_name = parameters["file_name"]
-    start = parameters["start"]
-    count = parameters["count"]
+    file_name = parameters.get("file_name")
+    start = parameters.get("start")
+    count = parameters.get("count")
 
     # Abrir archivo csv
     with open(file_name, 'r', encoding="utf8") as csvfile:
@@ -52,21 +52,21 @@ def get_parameters() -> dict:
 
     arguments = vars(parser.parse_args())
 
-    file_name = arguments["file"]
+    file_name = arguments.get("file")
 
-    if not arguments["start"]:
+    if not arguments.get("start"):
         start = None
-    elif not arguments["start"].isdigit():
+    elif not arguments.get("start").isdigit():
         raise ValueError("El parámetro -s debe ser un entero mayor o igual que 1")
     else:
-        start = int(arguments["start"])
+        start = int(arguments.get("start"))
 
-    if not arguments["count"]:
+    if not arguments.get("count"):
         count = None
-    elif not arguments["count"].isdigit():
+    elif not arguments.get("count").isdigit():
         raise ValueError("El parámetro -c debe ser un entero mayor o igual que 1")
     else:
-        count = int(arguments["count"])
+        count = int(arguments.get("count"))
 
     return {"file_name": file_name, "start": start, "count": count}
                 
